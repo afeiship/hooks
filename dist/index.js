@@ -4,7 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _slateHyperscript = require('slate-hyperscript');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
   name: 'italic',
@@ -29,13 +35,13 @@ exports.default = {
           _leaf = _ref.leaf;
 
       if (_leaf.italic) {
-        children = React.createElement(
+        children = _react2.default.createElement(
           'em',
           null,
           children
         );
       }
-      return React.createElement(
+      return _react2.default.createElement(
         'span',
         attributes,
         children
