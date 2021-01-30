@@ -30,6 +30,7 @@
     "release-it": "^14.2.2"
   },
   "peerDependencies": {
+    "react": "^17.0.1",
     "slate-hyperscript": "^0.59.0"
   },
   "publishConfig": {
