@@ -31,5 +31,9 @@
   },
   "peerDependencies": {
     "slate-hyperscript": "^0.59.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
