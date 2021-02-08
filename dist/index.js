@@ -10,42 +10,44 @@ var _react2 = _interopRequireDefault(_react);
 
 var _slateHyperscript = require('slate-hyperscript');
 
+var _nextSlatePlugin = require('@jswork/next-slate-plugin');
+
+var _nextSlatePlugin2 = _interopRequireDefault(_nextSlatePlugin);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
-  name: 'italic',
-  importer: function importer(el, children) {
-    var nodeName = el.nodeName.toLowerCase();
-    if (nodeName === 'span' && el.style.fontStyle === 'italic') {
-      return (0, _slateHyperscript.jsx)('text', { italic: true }, children);
-    }
-  },
-  // to-html
-  exporter: function exporter(node, children) {
-    if (!children) {
-      if (node.italic) {
-        return '<span style="font-style: italic">' + node.text + '</span>';
-      }
-    }
-  },
-  hooks: {
-    leaf: function leaf(inContext, _ref) {
-      var attributes = _ref.attributes,
-          children = _ref.children,
-          _leaf = _ref.leaf;
+exports.default = _nextSlatePlugin2.default.define({
+  id: 'italic',
+  hotkey: 'mod+i',
+  serialize: {
+    input: function input(_ref, children) {
+      var el = _ref.el;
 
-      if (_leaf.italic) {
-        children = _react2.default.createElement(
-          'em',
-          null,
-          children
-        );
+      var nodeName = el.nodeName.toLowerCase();
+      if (nodeName === 'i') {
+        return (0, _slateHyperscript.jsx)('text', { italic: true }, children);
       }
-      return _react2.default.createElement(
-        'span',
-        attributes,
-        children
-      );
+    },
+    output: function output(_ref2) {
+      var el = _ref2.el;
+
+      var i = document.createElement('i');
+      i.appendChild(el);
+      return i;
     }
+  },
+  render: function render(_, _ref3) {
+    var attributes = _ref3.attributes,
+        children = _ref3.children,
+        leaf = _ref3.leaf;
+
+    return _react2.default.createElement(
+      'em',
+      attributes,
+      children
+    );
   }
-};
+}); /**
+     * @usage:
+     * Editor.addMark(editor,'italic', true)
+     */
