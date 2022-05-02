@@ -21,7 +21,8 @@
     "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
     "clean": "rimraf -rf ./dist",
     "types-check": "tsc -p tsconfig.json",
-    "release": "release-it"
+    "release": "release-it",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.17.10",
@@ -59,12 +60,7 @@
   "peerDependencies": {
     "react": ">=16.8.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{js,css,scss,ts,tsx}": "prettier --write"
+    "*.{js,ts,tsx}": "eslint --cache --fix"
   }
 }
