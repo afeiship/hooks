@@ -16,24 +16,20 @@
     "./lib"
   ],
   "scripts": {
-    "clean": "lerna run clean && lerna clean -y",
-    "bootstrap": "npm ci && lerna exec npm ci && npm run copy:hooks",
+    "clean": "lerna clean -y",
     "format": "run-p format:*",
     "format:code": "npm run lint:code -- --fix",
     "format:other": "npm run lint:other -- --write",
     "test": "jest",
-    "test:ssr": "jest --config ./jest.config.node.ts",
-    "test:watch": "npm run test -- --watch --silent",
+    "test:watch": "jest --watch --silent",
     "build": "lerna run build --stream",
     "build:lib": "lerna run --scope hooks build && npm run copy:hooks",
-    "dev:site": "npm run build:lib && cd site && npm run start",
     "dev:lib": "npm run test:watch",
-    "serve:site": "cd site && npm run serve",
     "publish": "npm run build:lib && npm run test && lerna publish --no-git-reset"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
-    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/react-hooks": "^8.0.0",
     "@types/glob": "^7.1.4",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.17",
@@ -62,8 +58,12 @@
     "npm-run-all": "^4.1.5",
     "plop": "^3.0.5",
     "prettier": "^2.5.1",
-    "rimraf": "^3.0.2",
+    "react-test-renderer": "^18.1.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }
