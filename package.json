@@ -1,26 +1,31 @@
 {
-  "name": "hooks",
-  "private": true,
+  "name": "@jswork/hooks",
   "description": "Custom react hooks.",
   "homepage": "https://js.work",
+  "version": "1.0.0",
   "keywords": [
     "typescript",
     "react",
-    "npm",
-    "lerna",
-    "hooks",
-    "react-hooks"
+    "react-hooks",
+    "npm"
   ],
   "license": "MIT",
-  "workspaces": [
-    "./lib"
-  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch --silent",
-    "publish": "npm run test && lerna publish --no-git-reset"
+    "test:watch": "jest --watch",
+    "prebuild": "npm run clean",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
+    "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
+    "clean": "rimraf -rf ./dist",
+    "types-check": "tsc -p tsconfig.json"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
     "@testing-library/react": "^13.1.1",
     "@testing-library/react-hooks": "8.0.0",
     "@types/glob": "^7.2.0",
@@ -47,11 +52,12 @@
     "lerna": "^4.0.0",
     "lint-staged": "^12.4.1",
     "prettier": "^2.5.1",
+    "react": ">=16.8.0",
+    "react-test-renderer": ">=16.8.0",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
-  "dependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+  "peerDependencies": {
+    "react": ">=16.8.0"
   }
 }
