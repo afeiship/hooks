@@ -3,13 +3,8 @@
     "requireCleanWorkingDir": false
   },
   "hooks": {
-    "after:init": [
-      "npm run test",
-      "t2k"
-    ],
-    "after:bump": [
-      "npm run build"
-    ]
+    "after:init": ["npm run test", "t2k"],
+    "after:bump": ["npm run build"]
   },
   "github": {
     "release": true,
