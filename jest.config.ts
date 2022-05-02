@@ -1,9 +1,15 @@
 import type { Config } from '@jest/types';
 
-import base from './jest.config.base';
-
 const config: Config.InitialOptions = {
-  ...base,
+  roots: ['<rootDir>'],
+  transform: {
+    '^.+\\.[jt]sx?$': `<rootDir>/jest-preprocess.js`,
+  },
+  moduleNameMapper: {
+    '@/*': '<rootDir>/packages/src/*',
+  },
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testEnvironment: 'jsdom',
 };
 
