@@ -2,7 +2,7 @@
   "name": "@jswork/hooks",
   "description": "Custom react hooks.",
   "homepage": "https://js.work",
-  "version": "2.5.1",
+  "version": "1.0.0",
   "keywords": [
     "typescript",
     "react",

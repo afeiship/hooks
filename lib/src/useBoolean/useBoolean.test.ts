@@ -1,11 +1,10 @@
-import { act, renderHook } from '@testing-library/react-hooks/native'
-
 import useBoolean from './useBoolean'
+import { act, renderHook } from '@testing-library/react-hooks'
 
 describe('useBoolean()', () => {
   test('should use boolean', () => {
-    const { result } = renderHook(() => useBoolean())
-
+    const { result } = renderHook(() => useBoolean(false))
+    console.log('result: ', result)
     expect(result.current.value).toBe(false)
     expect(typeof result.current.setTrue).toBe('function')
     expect(typeof result.current.setFalse).toBe('function')
