@@ -12,7 +12,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
   ],
-  plugins: ['react', 'simple-import-sort', 'prettier', 'jsx-a11y'],
+  plugins: ['react', 'prettier', 'jsx-a11y'],
   env: {
     browser: true,
     es6: true,
@@ -26,8 +26,6 @@ module.exports = {
   rules: {
     'prettier/prettier': 'warn',
     'react/prop-types': 'off',
-    'sort-imports': 'off',
-    'import/order': 'off',
   },
   overrides: [
     // Typescript related rules

@@ -15,7 +15,6 @@
   "types": "./dist/esm/index.d.ts",
   "scripts": {
     "prebuild": "npm run clean",
-    "start": "chokidar \"src/**/*.ts\" -c \"npm run build\"",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc -p tsconfig.build.json --module commonjs --outDir dist/cjs",
     "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
@@ -30,6 +29,5 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0"
-  },
-  "gitHead": "05340494dd6e96fa501695936b6fb51c051ffd40"
+  }
 }
