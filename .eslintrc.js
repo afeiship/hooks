@@ -50,10 +50,7 @@ module.exports = {
       rules: {
         // We should absolutely avoid using ts-ignore, but it's not always possible.
         // particular when a dependencies types are incorrect.
-        '@typescript-eslint/ban-ts-comment': [
-          `warn`,
-          { 'ts-ignore': `allow-with-description` },
-        ],
+        '@typescript-eslint/ban-ts-comment': ['warn', { 'ts-ignore': `allow-with-description` }],
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-unused-vars': [
           'warn',
@@ -89,4 +86,4 @@ module.exports = {
       },
     },
   ],
-}
+};
