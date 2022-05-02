@@ -4,7 +4,6 @@ import { act, renderHook } from '@testing-library/react-hooks'
 describe('useBoolean()', () => {
   test('should use boolean', () => {
     const { result } = renderHook(() => useBoolean(false))
-    console.log('result: ', result)
     expect(result.current.value).toBe(false)
     expect(typeof result.current.setTrue).toBe('function')
     expect(typeof result.current.setFalse).toBe('function')
@@ -14,13 +13,11 @@ describe('useBoolean()', () => {
 
   test('should default value works (1)', () => {
     const { result } = renderHook(() => useBoolean(true))
-
     expect(result.current.value).toBe(true)
   })
 
   test('should default value works (2)', () => {
     const { result } = renderHook(() => useBoolean(false))
-
     expect(result.current.value).toBe(false)
   })
 

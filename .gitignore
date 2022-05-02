@@ -34,3 +34,4 @@ coverage
 # Mac files
 .DS_Store
 .idea
+yarn.lock

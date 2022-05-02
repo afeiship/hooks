@@ -33,7 +33,6 @@ const config: Config.InitialOptions = {
     __PATH_PREFIX__: ``,
   },
   testURL: `http://localhost`,
-  setupFiles: [`<rootDir>/loadershim.js`],
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 }
