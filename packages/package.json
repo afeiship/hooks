@@ -31,12 +31,5 @@
   "peerDependencies": {
     "react": ">=16.8.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/juliencrn/usehooks-ts"
-  },
-  "bugs": {
-    "url": "https://github.com/juliencrn/usehooks-ts/issues"
-  },
   "gitHead": "05340494dd6e96fa501695936b6fb51c051ffd40"
 }
