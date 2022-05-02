@@ -6,7 +6,7 @@ const config: Config.InitialOptions = {
     '^.+\\.[jt]sx?$': `<rootDir>/jest-preprocess.js`,
   },
   moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/$1',
+    '@/*': '<rootDir>/packages/src/*',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.([tj]sx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],

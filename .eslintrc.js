@@ -28,18 +28,6 @@ module.exports = {
     'react/prop-types': 'off',
     'sort-imports': 'off',
     'import/order': 'off',
-    'simple-import-sort/exports': 'warn',
-    'simple-import-sort/imports': [
-      'warn',
-      {
-        groups: [
-          ['^\\u0000'], // side effect (E.g.`import 'normalize.css'`)
-          ['^react$'],
-          ['^[^.]'], // Libs
-          ['^../|^~/|^./'],
-        ],
-      },
-    ],
   },
   overrides: [
     // Typescript related rules

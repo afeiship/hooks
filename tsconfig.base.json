@@ -13,8 +13,8 @@
     "lib": ["ESNEXT", "DOM"],
     "baseUrl": ".",
     "paths": {
-      "@": [
-        "lib/src/*"
+      "@/*": [
+        "packages/src/*"
       ]
     }
   },

@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
 interface ReturnType {
-  value: number;
-  setValue: Dispatch<SetStateAction<number>>;
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
   reset: () => void;
   increment: () => void;
   decrement: () => void;
@@ -10,11 +10,11 @@ interface ReturnType {
 
 export const useCounter = (defaultValue?: number): ReturnType => {
   const initValue = defaultValue || 0;
-  const [value, setValue] = useState(initValue);
+  const [count, setCount] = useState(initValue);
 
-  const reset = () => setValue(initValue);
-  const increment = () => setValue(value + 1);
-  const decrement = () => setValue(value - 1);
+  const reset = () => setCount(initValue);
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
 
-  return { value, setValue, reset, increment, decrement };
+  return { count, setCount, reset, increment, decrement };
 };
