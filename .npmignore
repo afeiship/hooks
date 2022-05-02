@@ -18,3 +18,17 @@ rollup.config.js
 .github
 api
 docs
+
+
+file-mock.js
+.eslintignore
+.eslintrc.js
+.prettierignore
+.release-it.json
+babel.config.js
+jest-preprocess.js
+jest.config.ts
+lerna.json
+tsconfig.base.json
+tsconfig.build.json
+tsconfig.json
