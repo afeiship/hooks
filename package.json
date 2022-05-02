@@ -21,7 +21,8 @@
     "build:esm": "tsc -p tsconfig.build.json --module esNext --outDir dist/esm",
     "clean": "rimraf -rf ./dist",
     "types-check": "tsc -p tsconfig.json",
-    "release": "release-it"
+    "release": "release-it",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.17.10",
@@ -44,9 +45,11 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-tree-shaking": "^1.10.0",
+    "husky": "^7.0.4",
     "jest": "^28.0.3",
     "jest-environment-jsdom": "^28.0.2",
     "jsdom": "^19.0.0",
+    "lint-staged": "^12.4.1",
     "prettier": "^2.5.1",
     "react": ">=16.8.0",
     "react-test-renderer": ">=16.8.0",
@@ -56,5 +59,8 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
