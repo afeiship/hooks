@@ -1,4 +1,4 @@
-import useBoolean from './useBoolean';
+import { useBoolean } from '../lib/src/use-boolean';
 import { act, renderHook } from '@testing-library/react-hooks';
 
 describe('useBoolean()', () => {

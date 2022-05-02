@@ -10,7 +10,13 @@
     "jsx": "react",
     "strict": true,
     "isolatedModules": true,
-    "lib": ["ESNEXT", "DOM"]
+    "lib": ["ESNEXT", "DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "@": [
+        "lib/src/*"
+      ]
+    }
   },
 
   "exclude": ["node_modules", "dist"]

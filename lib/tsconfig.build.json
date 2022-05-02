@@ -1,6 +1,5 @@
 {
   "extends": "../tsconfig.base.json",
-
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
@@ -9,7 +8,7 @@
     // Needed for CommonJS modules
     "allowSyntheticDefaultImports": true
   },
-
-  "include": ["./src/**/*"],
-  "exclude": ["./src/**/*.test.ts"]
+  "include": [
+    "./src/**/*"
+  ]
 }
