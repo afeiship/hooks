@@ -10,7 +10,7 @@ interface Destroyable {
 export const useTimeout = (callback: (args: void) => void, delay = 0): Destroyable => {
   const timeoutRef = useRef<number>();
   const savedCallback = useRef(callback);
-  const destroy = () => window.clearTimeout(timeoutRef.current);
+  const destroy = useCallback(() => window.clearTimeout(timeoutRef.current), []);
 
   useEffect(() => {
     savedCallback.current = callback;

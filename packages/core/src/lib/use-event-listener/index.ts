@@ -1,4 +1,4 @@
-import { useRef, useEffect, EventHandler } from 'react';
+import { useRef, useEffect, EventHandler, useCallback } from 'react';
 import NxDomEvent from '@jswork/next-dom-event';
 
 interface Destroyable {
@@ -12,7 +12,7 @@ export const useEventListener = (
 ): Destroyable => {
   const savedHandler = useRef<EventListener>();
   const resource = useRef<Destroyable>();
-  const destroy = () => resource.current!.destroy();
+  const destroy = useCallback(() => resource.current!.destroy(), []);
 
   useEffect(() => {
     savedHandler.current = handler;

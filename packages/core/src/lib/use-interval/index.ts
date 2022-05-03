@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface Destroyable {
   destroy: () => void;
@@ -7,7 +7,7 @@ interface Destroyable {
 export const useInterval = (callback: () => void, delay: number | null): Destroyable => {
   const savedCallback = useRef<() => void>();
   const timerId = useRef<number>();
-  const destroy = () => window.clearInterval(timerId.current);
+  const destroy = useCallback(() => window.clearInterval(timerId.current), []);
 
   // Remember the latest callback.
   useEffect(() => {
