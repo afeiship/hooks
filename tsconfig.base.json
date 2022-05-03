@@ -7,6 +7,7 @@
     "skipLibCheck": true,
     "removeComments": true,
     "esModuleInterop": true,
+    "noImplicitAny": false,
     "jsx": "react",
     "strict": true,
     "isolatedModules": true,
