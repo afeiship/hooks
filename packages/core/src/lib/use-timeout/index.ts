@@ -8,11 +8,10 @@ interface Destroyable {
 }
 
 export const useTimeout = (callback: (args: void) => void, delay = 0): Destroyable => {
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = useRef<number>();
   const savedCallback = useRef(callback);
   const destroy = () => {
-    // @ts-ignore
-    clearTimeout(timeoutRef.current);
+    window.clearTimeout(timeoutRef.current);
   };
 
   useEffect(() => {
@@ -21,7 +20,7 @@ export const useTimeout = (callback: (args: void) => void, delay = 0): Destroyab
 
   useEffect(() => {
     const tick = savedCallback.current;
-    timeoutRef.current = setTimeout(tick, delay);
+    timeoutRef.current = window.setTimeout(tick, delay);
     return destroy;
   }, [delay]);
 
