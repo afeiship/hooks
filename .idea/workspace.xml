@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1073645c-630a-4c46-922f-9f1c9a5c0f62" name="Changes" comment="Automatic commit by sourceTree.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/websites/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/websites/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/websites/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/packages/websites/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/build/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/build/scripts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
