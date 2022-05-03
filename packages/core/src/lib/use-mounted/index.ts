@@ -1,6 +1,6 @@
 import { useRef, useCallback, useEffect } from 'react';
 
-type ReturnValue = (callback: () => void) => boolean;
+type ReturnValue = () => boolean;
 
 export const useMounted = (): ReturnValue => {
   const mountedRef = useRef(false);
