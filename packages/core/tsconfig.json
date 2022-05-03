@@ -11,6 +11,7 @@
     "skipDefaultLibCheck": true,
     "moduleResolution": "node",
     "noImplicitAny": false,
+    "lib": ["ESNEXT", "DOM"],
     "baseUrl": ".",
     "paths": {
       "@/*": [

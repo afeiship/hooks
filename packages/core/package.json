@@ -8,6 +8,7 @@
   "scripts": {
     "build": "gulp",
     "test": "jest",
+    "test:watch": "jest --watch",
     "release": "release-it"
   },
   "license": "MIT",
