@@ -1,21 +1,27 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, EventHandler } from 'react';
 import NxDomEvent from '@jswork/next-dom-event';
 
-type Handler = (event: Event) => void;
+interface Destroyable {
+  destroy: () => void;
+}
 
 export const useEventListener = (
   eventName: string,
-  handler: Handler,
+  handler: React.EventHandler<any>,
   element: Element | Window | null = window
-) => {
-  const savedHandler = useRef<Handler>();
+): Destroyable => {
+  const savedHandler = useRef<EventListener>();
+  const resource = useRef<Destroyable>();
+  const destroy = () => resource.current!.destroy();
 
   useEffect(() => {
     savedHandler.current = handler;
   }, [handler]);
 
   useEffect(() => {
-    const resource = NxDomEvent.on(element, eventName, savedHandler.current);
-    return () => resource.destroy();
+    resource.current = NxDomEvent.on(element, eventName, savedHandler.current) as Destroyable;
+    return destroy;
   }, [eventName, element]);
+
+  return { destroy };
 };
