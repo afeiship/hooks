@@ -11,6 +11,7 @@ type State<T> = {
   data: T | null;
   error: Error | null;
   destroy: () => void;
+  done: () => boolean;
 };
 
 // discriminated union type
@@ -31,6 +32,7 @@ enum STATUS {
 
 interface Options extends RequestInit {
   timeout?: number;
+  cacheable?: boolean;
   responseType?: XMLHttpRequestResponseType;
 }
 
@@ -40,7 +42,7 @@ export function useFetch<T>(inUrl: string, inOptions?: Options) {
   const cache = useRef<Cache<T>>({});
   const ctrlRef = useRef<AbortController>(new AbortController());
   const signal = ctrlRef.current.signal;
-  const { timeout, responseType, ...options } = { ...defaults, ...inOptions, signal };
+  const { timeout, cacheable, responseType, ...options } = { ...defaults, ...inOptions, signal };
   const opts = useRef(options);
   const destroy = useCallback(() => {
     ctrlRef.current.abort();
@@ -53,6 +55,9 @@ export function useFetch<T>(inUrl: string, inOptions?: Options) {
     error: null,
     data: null,
     destroy,
+    done: function () {
+      return this.status === 'success' || this.status === 'error';
+    },
   };
 
   // Keep state logic separated
@@ -78,6 +83,9 @@ export function useFetch<T>(inUrl: string, inOptions?: Options) {
 
     const fetchData = async () => {
       dispatch({ type: STATUS.loading });
+      const hasCache = cacheable && cache.current[inUrl];
+      if (hasCache) return dispatch({ type: STATUS.success, payload: cache.current[inUrl] });
+
       try {
         const response = await fetch(inUrl, opts.current);
         if (!response.ok) throw new Error(response.statusText);

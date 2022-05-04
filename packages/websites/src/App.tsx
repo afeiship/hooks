@@ -6,7 +6,7 @@ function App() {
     timeout: 1000,
   });
 
-  console.log("res: ", res);
+  console.log("res/is_done: ", res, res.done());
 
   return (
     <div className="App">
