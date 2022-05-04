@@ -1,9 +1,7 @@
-import { useRef, useCallback, useEffect } from 'react';
+import { useRef, useCallback, useEffect, RefObject, Ref } from 'react';
 
-type ReturnValue = () => boolean;
-
-export const useMounted = (): ReturnValue => {
-  const mountedRef = useRef(false);
+export const useMounted = (): RefObject<boolean> => {
+  const mountedRef = useRef<boolean>(false);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -12,5 +10,5 @@ export const useMounted = (): ReturnValue => {
     };
   }, []);
 
-  return useCallback(() => mountedRef.current, []);
+  return mountedRef;
 };
