@@ -3,6 +3,7 @@ import { useTimeout } from '../use-timeout';
 
 // @references: https://usehooks-ts.com/react-hook/use-fetch
 // @references: https://www.30secondsofcode.org/react/s/use-fetch
+// @references: https://dev.to/techcheck/custom-react-hook-usefetch-eid
 
 type Status = keyof typeof STATUS;
 type State<T> = {

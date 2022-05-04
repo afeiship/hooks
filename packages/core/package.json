@@ -51,7 +51,6 @@
   "dependencies": {
     "@jswork/next-deep-assign": "^1.0.2",
     "@jswork/next-dom-event": "^1.0.2",
-    "@jswork/next-header-normalize": "^1.0.1",
-    "@jswork/hooks": "^1.0.0"
+    "@jswork/next-header-normalize": "^1.0.1"
   }
 }
