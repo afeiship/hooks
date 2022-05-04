@@ -32,9 +32,7 @@ interface Options extends RequestInit {
   timeout?: number;
 }
 
-const defaults = {
-  timeout: 6e4,
-};
+const defaults = { timeout: 6e4 };
 
 export function useFetch<T>(inUrl: string, inOptions?: Options) {
   const cache = useRef<Cache<T>>({});
@@ -54,7 +52,7 @@ export function useFetch<T>(inUrl: string, inOptions?: Options) {
   }, []);
 
   const initialState: State<T> = {
-    status: 'init',
+    status: STATUS.init,
     error: null,
     data: null,
     destroy,
