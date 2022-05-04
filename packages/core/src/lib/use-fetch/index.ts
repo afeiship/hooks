@@ -42,16 +42,11 @@ export function useFetch<T>(inUrl: string, inOptions?: Options) {
   const signal = ctrlRef.current.signal;
   const { timeout, responseType, ...options } = { ...defaults, ...inOptions, signal };
   const opts = useRef(options);
-
-  useTimeout(() => {
-    try {
-      ctrlRef.current.abort();
-    } catch (e) {}
-  }, timeout);
-
   const destroy = useCallback(() => {
     ctrlRef.current.abort();
   }, []);
+
+  useTimeout(destroy, timeout);
 
   const initialState: State<T> = {
     status: STATUS.init,
