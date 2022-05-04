@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 // @ts-ignore
-import { useApi, useFetch } from "@jswork/hooks";
+import { useAsync, useFetch } from "@jswork/hooks";
 
 const apiGh = () => {
   return fetch("https://api.github.com/users/afeiship").then((res) =>
@@ -13,7 +13,7 @@ function App() {
     timeout: 1000,
   });
 
-  const { data, go } = useApi(apiGh);
+  const { data, go } = useAsync(apiGh);
 
   console.log("res/is_done: ", res, res.done());
   console.log("api data: ", data);
