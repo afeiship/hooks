@@ -14,7 +14,7 @@ export const useAsync = (fn: AsyncFunction, inOptions?: Options) => {
   const [error, setError] = useState<any>(null);
   const [data, setData] = useState<any>(null);
 
-  const go = useCallback(() => {
+  const run = useCallback(() => {
     setLoading(true);
     fn()
       .then(setData)
@@ -23,8 +23,8 @@ export const useAsync = (fn: AsyncFunction, inOptions?: Options) => {
   }, [fn]);
 
   useEffect(() => {
-    immediate && go();
+    immediate && run();
   }, []);
 
-  return { go, data, error, loading };
+  return { run, data, error, loading };
 };

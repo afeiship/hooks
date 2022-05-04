@@ -13,7 +13,7 @@ function App() {
     timeout: 1000,
   });
 
-  const { data, go } = useAsync(apiGh);
+  const { data, run } = useAsync(apiGh);
 
   console.log("res/is_done: ", res, res.done());
   console.log("api data: ", data);
@@ -35,7 +35,7 @@ function App() {
         </pre>
       )}
 
-      <button onClick={go}>Fetch Github info</button>
+      <button onClick={run}>Fetch Github info</button>
       <div id="result-gh">{JSON.stringify(data, null, 2)}</div>
     </div>
   );
