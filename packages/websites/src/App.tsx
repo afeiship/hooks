@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-ignore
 import { useFetch } from "@jswork/hooks";
 
 function App() {

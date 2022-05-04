@@ -83,8 +83,8 @@ export function useFetch<T>(inUrl: string, inOptions?: Options) {
 
     const fetchData = async () => {
       dispatch({ type: STATUS.loading });
-      const hasCache = cacheable && cache.current[inUrl];
-      if (hasCache) return dispatch({ type: STATUS.success, payload: cache.current[inUrl] });
+      const shouldCache = cacheable && cache.current[inUrl];
+      if (shouldCache) return dispatch({ type: STATUS.success, payload: cache.current[inUrl] });
 
       try {
         const response = await fetch(inUrl, opts.current);
