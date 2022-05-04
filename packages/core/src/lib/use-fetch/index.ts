@@ -31,15 +31,16 @@ enum STATUS {
 
 interface Options extends RequestInit {
   timeout?: number;
+  responseType?: XMLHttpRequestResponseType;
 }
 
-const defaults = { timeout: 6e4 };
+const defaults = { timeout: 6e4, responseType: 'json' };
 
 export function useFetch<T>(inUrl: string, inOptions?: Options) {
   const cache = useRef<Cache<T>>({});
   const ctrlRef = useRef<AbortController>(new AbortController());
   const signal = ctrlRef.current.signal;
-  const { timeout, ...options } = { ...defaults, ...inOptions, signal };
+  const { timeout, responseType, ...options } = { ...defaults, ...inOptions, signal };
   const opts = useRef(options);
 
   useTimeout(() => {
@@ -86,7 +87,7 @@ export function useFetch<T>(inUrl: string, inOptions?: Options) {
         const response = await fetch(inUrl, opts.current);
         if (!response.ok) throw new Error(response.statusText);
 
-        const data = (await response.json()) as T;
+        const data = (await response[responseType]()) as T;
         cache.current[inUrl] = data;
 
         dispatch({ type: STATUS.success, payload: data });
