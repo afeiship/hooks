@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 // @ts-ignore
-import { useFetch } from "@jswork/hooks";
+import { useApi, useFetch } from "@jswork/hooks";
+
+const apiGh = () => {
+  return fetch("https://api.github.com/users/afeiship").then((res) =>
+    res.json()
+  );
+};
 
 function App() {
   const res = useFetch("https://api.uomg.com/api/qq.info?qq=1290657123", {
     timeout: 1000,
   });
 
+  const { data, go } = useApi(apiGh);
+
   console.log("res/is_done: ", res, res.done());
+  console.log("api data: ", data);
 
   return (
     <div className="App">
@@ -25,6 +34,9 @@ function App() {
           </code>
         </pre>
       )}
+
+      <button onClick={go}>Fetch Github info</button>
+      <div id="result-gh">{JSON.stringify(data, null, 2)}</div>
     </div>
   );
 }
