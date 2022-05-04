@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// @ts-ignore
+import { useFetch } from "@jswork/hooks";
 
 function App() {
+  const res = useFetch("https://api.uomg.com/api/qq.info?qq=1290657123", {
+    timeout: 10000,
+  });
+
+  console.log("res: ", res);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {res.status === "loading" && <pre>loading...</pre>}
+      {res.status === "success" && (
+        <pre>
+          <code>{JSON.stringify(res.data, null, 2)}</code>
+        </pre>
+      )}
     </div>
   );
 }

@@ -6,22 +6,22 @@ interface Destroyable {
 }
 
 export const useEventListener = (
-  eventName: string,
-  handler: React.EventHandler<any>,
-  element: Element | Window | null = window
+  inEventName: string,
+  inHandler: EventHandler<any>,
+  inElement: Element | Window | null = window
 ): Destroyable => {
   const savedHandler = useRef<EventListener>();
   const resource = useRef<Destroyable>();
   const destroy = useCallback(() => resource.current!.destroy(), []);
 
   useEffect(() => {
-    savedHandler.current = handler;
-  }, [handler]);
+    savedHandler.current = inHandler;
+  }, [inHandler]);
 
   useEffect(() => {
-    resource.current = NxDomEvent.on(element, eventName, savedHandler.current) as Destroyable;
+    resource.current = NxDomEvent.on(inElement, inEventName, savedHandler.current) as Destroyable;
     return destroy;
-  }, [eventName, element]);
+  }, [inEventName, inElement]);
 
   return { destroy };
 };

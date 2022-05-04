@@ -8,8 +8,8 @@ interface ReturnType {
   decrement: () => void;
 }
 
-export const useCounter = (defaultValue?: number): ReturnType => {
-  const initValue = defaultValue || 0;
+export const useCounter = (inInitialValue?: number): ReturnType => {
+  const initValue = inInitialValue || 0;
   const [count, setCount] = useState(initValue);
 
   const reset = () => setCount(initValue);
