@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-// https://spectrum.chat/react/general/use-custom-hook-usefetch-on-button-submit~2067eb8a-5029-4d3a-b759-dcd7871b584a
+// @reference: https://spectrum.chat/react/general/use-custom-hook-usefetch-on-button-submit~2067eb8a-5029-4d3a-b759-dcd7871b584a
 
 interface Options {
   immediate?: boolean;
