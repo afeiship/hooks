@@ -6,7 +6,9 @@ interface Options {
   immediate?: boolean;
 }
 
-export const useApi = (fn: Function, inOptions?: Options) => {
+type ApiFn = () => Promise<any>;
+
+export const useApi = (fn: ApiFn, inOptions?: Options) => {
   const { immediate = false } = inOptions || {};
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
