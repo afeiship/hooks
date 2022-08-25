@@ -1,6 +1,5 @@
 import React from "react";
-// @ts-ignore
-import { useAsync } from "@jswork/hooks";
+import { useAsync, useWaitingCallback } from "@jswork/hooks";
 
 const apiGh = () => {
   return fetch("https://api.github.com/users/afeiship").then((res) =>
@@ -14,8 +13,16 @@ function App() {
   // });
 
   const { data, run, pending } = useAsync(apiGh, null);
-
-  console.log("api data: ", pending, data);
+  const { loading, execute } = useWaitingCallback({
+    callback: () => {
+      // use setTimeout to simulate async action
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(null);
+        }, 1000);
+      });
+    },
+  });
 
   return (
     <div className="App">
@@ -38,6 +45,10 @@ function App() {
         Fetch Github info - loading: {String(pending)}
       </button>
       <div id="result-gh">{JSON.stringify(data, null, 2)}</div>
+
+      <button disabled={loading} onClick={execute}>
+        {loading ? "loading" : "Download"}
+      </button>
     </div>
   );
 }

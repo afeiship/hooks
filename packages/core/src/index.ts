@@ -6,3 +6,4 @@ export * from './lib/use-fetch';
 export * from './lib/use-interval';
 export * from './lib/use-mounted';
 export * from './lib/use-timeout';
+export * from './lib/use-waiting-callback';
