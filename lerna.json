@@ -2,8 +2,7 @@
   "version": "independent",
   "npmClient": "yarn",
   "packages": [
-    "core",
-    "websites"
+    "packages/*"
   ],
   "ignoreChanges": [
     "CHANGELOG.md",

@@ -1,4 +1,5 @@
 import { useRef, useEffect, EventHandler, useCallback } from 'react';
+import nx from '@jswork/next';
 import '@jswork/next-dom-event';
 
 interface Destroyable {
@@ -8,7 +9,7 @@ interface Destroyable {
 export const useEventListener = (
   inEventName: string,
   inHandler: EventHandler<any>,
-  inElement: Element | Window | null = window
+  inElement: HTMLElement | Window | null = window
 ): Destroyable => {
   const savedHandler = useRef<EventListener>();
   const resource = useRef<Destroyable>();
@@ -19,6 +20,7 @@ export const useEventListener = (
   }, [inHandler]);
 
   useEffect(() => {
+    // @ts-ignore
     resource.current = nx.DomEvent.on(inElement, inEventName, savedHandler.current) as Destroyable;
     return destroy;
   }, [inEventName, inElement]);
