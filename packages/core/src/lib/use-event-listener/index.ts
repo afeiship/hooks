@@ -1,5 +1,5 @@
 import { useRef, useEffect, EventHandler, useCallback } from 'react';
-import NxDomEvent from '@jswork/next-dom-event';
+import '@jswork/next-dom-event';
 
 interface Destroyable {
   destroy: () => void;
@@ -19,7 +19,7 @@ export const useEventListener = (
   }, [inHandler]);
 
   useEffect(() => {
-    resource.current = NxDomEvent.on(inElement, inEventName, savedHandler.current) as Destroyable;
+    resource.current = nx.DomEvent.on(inElement, inEventName, savedHandler.current) as Destroyable;
     return destroy;
   }, [inEventName, inElement]);
 
